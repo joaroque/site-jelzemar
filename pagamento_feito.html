@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aguardando Pagamento - EkuluTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #000000;
+            border-bottom: 2px solid #ffd700;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo i {
+            color: #ffd700;
+        }
+
+        .logo span {
+            color: #ffd700;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-bar form {
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #333;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background: #ffd700;
+            border: none;
+            color: #000;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        nav {
+            background: #111;
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            padding: 15px 0;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffd700;
+        }
+
+        /* PÁGINA DE PAGAMENTO PENDENTE */
+        .pending-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: #111;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #222;
+            text-align: center;
+        }
+
+        .pending-icon {
+            font-size: 80px;
+            color: #ff9800;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+        }
+
+        .pending-container h1 {
+            color: #ff9800;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .pending-container .subtitle {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .order-box {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #ff9800;
+        }
+
+        .order-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffd700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .order-status {
+            display: inline-block;
+            background: rgba(255, 152, 0, 0.2);
+            color: #ff9800;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* INFORMAÇÕES BANCÁRIAS */
+        .bank-info {
+            background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2a 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+            border: 1px solid #ffd700;
+        }
+
+        .bank-info h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .bank-details {
+            background: #0a0a0a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .bank-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #222;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .bank-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-label {
+            color: #aaa;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bank-label i {
+            color: #ffd700;
+            width: 20px;
+        }
+
+        .bank-value {
+            color: #ffd700;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 1rem;
+            word-break: break-all;
+            text-align: right;
+        }
+
+        .amount-box {
+            background: #ffd700;
+            color: #000;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .amount-box .label {
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
+        .amount-box .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .copy-btn {
+            background: #ffd700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #e6c200;
+            transform: scale(1.02);
+        }
+
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid #ff9800;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .warning i {
+            color: #ff9800;
+            margin-right: 10px;
+        }
+
+        .warning strong {
+            color: #ff9800;
+        }
+
+        .product-summary {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .product-summary h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-left: 3px solid #ffd700;
+            padding-left: 12px;
+        }
+
+        .product-summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            color: #aaa;
+            border-bottom: 1px solid #222;
+        }
+
+        .product-summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary, .btn-whatsapp {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #e6c200;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: scale(1.02);
+        }
+
+        .countdown {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 12px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .countdown span {
+            color: #ff9800;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #000;
+            margin-top: 60px;
+            padding: 40px 0 20px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p, .footer-column li {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .pending-container {
+                padding: 25px;
+                margin: 20px 15px;
+            }
+            
+            .bank-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .bank-value {
+                text-align: left;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn-primary, .btn-secondary, .btn-whatsapp {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-laptop-code"></i>
+                        Ekulu<span>Tech</span>
+                    </a>
+                    <div class="tagline">Ekulu Company</div>
+                </div>
+                
+                <div class="search-bar">
+                    <form id="searchForm">
+                        <input type="text" id="searchInput" placeholder="Buscar produtos...">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+                <li><a href="iphones.html">iPhone</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="pending-container">
+                <div class="pending-icon">
+                    <i class="fas fa-hourglass-half"></i>
+                </div>
+                
+                <h1>Aguardando Pagamento</h1>
+                <p class="subtitle">Seu pedido foi registrado! Para finalizar, realize a transferência bancária.</p>
+                
+                <div class="order-box">
+                    <div class="order-number" id="orderNumber">#--------</div>
+                    <div class="order-status">
+                        <i class="fas fa-clock"></i> Aguardando Pagamento
+                    </div>
+                </div>
+                
+                <!-- Resumo do produto -->
+                <div class="product-summary" id="productSummary">
+                    <h3><i class="fas fa-box"></i> Resumo do Pedido</h3>
+                    <div id="productDetails"></div>
+                </div>
+                
+                <!-- INFORMAÇÕES BANCÁRIAS -->
+                <div class="bank-info">
+                    <h3><i class="fas fa-university"></i> Dados para Transferência</h3>
+                    <p style="text-align: center; margin-bottom: 15px; color: #aaa;">Realize a transferência do valor exato para a conta abaixo:</p>
+                    
+                    <div class="bank-details">
+                        <div class="bank-row">
+                            <span class="bank-label"><i class="fas fa-building"></i> Banco:</span>
+                            <span class="bank-value">Banco Millennium Atlântico</span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label"><i class="fas fa-hashtag"></i> IBAN:</span>
+                            <span class="bank-value" id="ibanValue">0055.0000.7650.9814.1011.2</span>
+                        </div>
+                        <div class="bank-row">
+                            <span class="bank-label"><i class="fas fa-user"></i> Titular da Conta:</span>
+                            <span class="bank-value" id="titularValue">Jelzemar F. M. Ekuikui do Rosario</span>
+                        </div>
+                    </div>
+                    
+                    <button class="copy-btn" id="copyIbanBtn">
+                        <i class="fas fa-copy"></i> Copiar IBAN
+                    </button>
+                    
+                    <div class="amount-box">
+                        <div class="label">💰 VALOR A TRANSFERIR</div>
+                        <div class="value" id="paymentAmount">0,00 Kz</div>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Atenção!</strong> O pedido só será processado após a confirmação do pagamento.<br>
+                    Envie o comprovante da transferência para nosso WhatsApp e aguarde a confirmação.
+                </div>
+                
+                <div class="countdown">
+                    <i class="fas fa-stopwatch"></i> Prazo para pagamento: <span id="timer">24:00:00</span>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn-primary" id="copyIbanBtn2">
+                        <i class="fas fa-copy"></i> Copiar IBAN
+                    </button>
+                    <a href="https://wa.me/244943400675" target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Enviar Comprovante
+                    </a>
+                    <a href="index.html" class="btn-secondary">
+                        <i class="fas fa-home"></i> Voltar à Loja
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EkuluTech</h3>
+                    <p>Ekulu Company - Especialistas em tecnologia importada dos Estados Unidos com garantia de qualidade e procedência.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="iphones.html">iPhone</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> +244 943 400 675</li>
+                        <li><i class="fas fa-envelope"></i> ekulucompany@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Luanda, Angola</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> EkuluTech - Ekulu Company - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Ano atual
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Carregar dados do pedido do localStorage
+        let orderData = null;
+        
+        function loadOrderData() {
+            const savedOrder = localStorage.getItem('ekulu-confirmed-order');
+            if (savedOrder) {
+                orderData = JSON.parse(savedOrder);
+                displayOrderSummary();
+            } else {
+                // Dados de exemplo para demonstração
+                orderData = {
+                    orderId: Math.floor(Math.random() * 900000) + 100000,
+                    productName: "iPhone 15 Pro Max",
+                    productColor: "Titânio Preto",
+                    productStorage: "256GB",
+                    totalPrice: "1.250.000,00",
+                    customerName: "Cliente Exemplo",
+                    customerPhone: "+244 999 999 999",
+                    customerAddress: "Rua Exemplo, 123",
+                    customerCity: "Luanda",
+                    orderDate: new Date().toISOString()
+                };
+                displayOrderSummary();
+            }
+        }
+        
+        function displayOrderSummary() {
+            if (!orderData) return;
+            
+            // Exibir número do pedido
+            const orderNumberEl = document.getElementById('orderNumber');
+            if (orderNumberEl) {
+                orderNumberEl.innerHTML = `#${orderData.orderId}`;
+            }
+            
+            // Exibir resumo do produto
+            const productDetailsEl = document.getElementById('productDetails');
+            if (productDetailsEl) {
+                productDetailsEl.innerHTML = `
+                    <div class="product-summary-item">
+                        <span>📱 Produto:</span>
+                        <span><strong>${orderData.productName}</strong></span>
+                    </div>
+                    <div class="product-summary-item">
+                        <span>🎨 Cor:</span>
+                        <span>${orderData.productColor}</span>
+                    </div>
+                    <div class="product-summary-item">
+                        <span>💾 Capacidade:</span>
+                        <span>${orderData.productStorage}</span>
+                    </div>
+                    <div class="product-summary-item">
+                        <span>👤 Cliente:</span>
+                        <span>${orderData.customerName}</span>
+                    </div>
+                    <div class="product-summary-item">
+                        <span>📞 Telefone:</span>
+                        <span>${orderData.customerPhone}</span>
+                    </div>
+                    <div class="product-summary-item">
+                        <span>📍 Endereço:</span>
+                        <span>${orderData.customerAddress}</span>
+                    </div>
+                    <div class="product-summary-item">
+                        <span>🏙️ Cidade:</span>
+                        <span>${orderData.customerCity}</span>
+                    </div>
+                    <div style="border-top: 1px solid #222; margin-top: 10px; padding-top: 10px;" class="product-summary-item">
+                        <span>💰 Total:</span>
+                        <span style="color: #ffd700; font-size: 1.1rem;">${orderData.totalPrice} Kz</span>
+                    </div>
+                `;
+            }
+            
+            // Exibir valor do pagamento
+            const paymentAmountEl = document.getElementById('paymentAmount');
+            if (paymentAmountEl) {
+                paymentAmountEl.textContent = `${orderData.totalPrice} Kz`;
+            }
+        }
+        
+        // Função para copiar IBAN
+        function copyIBAN() {
+            const iban = "0055.0000.7650.9814.1011.2";
+            navigator.clipboard.writeText(iban).then(() => {
+                // Mostrar notificação
+                const btns = [document.getElementById('copyIbanBtn'), document.getElementById('copyIbanBtn2')];
+                btns.forEach(btn => {
+                    if (btn) {
+                        const originalText = btn.innerHTML;
+                        btn.innerHTML = '<i class="fas fa-check"></i> IBAN Copiado!';
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                        }, 2000);
+                    }
+                });
+            }).catch(err => {
+                alert('Não foi possível copiar o IBAN. Copie manualmente: ' + iban);
+            });
+        }
+        
+        // Contagem regressiva de 24 horas
+        function startCountdown() {
+            const timerElement = document.getElementById('timer');
+            if (!timerElement) return;
+            
+            // Verificar se já existe um tempo salvo
+            let endTime = localStorage.getItem('payment_deadline');
+            
+            if (!endTime) {
+                // Definir 24 horas a partir de agora
+                endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+                localStorage.setItem('payment_deadline', endTime);
+            }
+            
+            function updateTimer() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+                
+                if (distance <= 0) {
+                    timerElement.innerHTML = "00:00:00";
+                    localStorage.removeItem('payment_deadline');
+                    return;
+                }
+                
+                const hours = Math.floor(distance / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                timerElement.innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+            
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+        
+        // Busca
+        const searchForm = document.getElementById('searchForm');
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const term = document.getElementById('searchInput').value.trim();
+                if (term) {
+                    window.location.href = `iphones.html?search=${encodeURIComponent(term)}`;
+                }
+            });
+        }
+        
+        // Inicializar
+        loadOrderData();
+        startCountdown();
+        
+        // Eventos dos botões copiar IBAN
+        const copyBtn1 = document.getElementById('copyIbanBtn');
+        const copyBtn2 = document.getElementById('copyIbanBtn2');
+        
+        if (copyBtn1) copyBtn1.addEventListener('click', copyIBAN);
+        if (copyBtn2) copyBtn2.addEventListener('click', copyIBAN);
+        
+        // Menu ativo
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

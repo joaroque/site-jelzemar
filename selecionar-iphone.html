@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalizar iPhone - Ekuli Tech</title>
+    <title>Personalizar iPhone - EkuluTech</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -275,7 +275,7 @@
 
         /* CONTAINER PADRÃO PARA IMAGENS - COM FUNDO BRANCO */
         .product-image {
-            background: #FFFFFF; /* FUNDO BRANCO */
+            background: #FFFFFF;
             border-radius: 20px;
             padding: 20px;
             display: flex;
@@ -283,8 +283,8 @@
             justify-content: center;
             overflow: hidden;
             position: relative;
-            border: 2px solid #E0E0E0; /* BORDA MAIS CLARA */
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); /* SOMBRA MAIS SUAVE */
+            border: 2px solid #E0E0E0;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
             min-height: 500px;
             width: 100%;
         }
@@ -302,7 +302,6 @@
             z-index: 1;
         }
 
-        /* ESTILO PADRÃO PARA TODAS AS IMAGENS - MESMO TAMANHO */
         .product-image img {
             max-width: 100%;
             max-height: 450px;
@@ -335,8 +334,6 @@
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             line-height: 1.2;
         }
-
-        /* REMOVIDO: product-price inicial (mostraremos apenas o preço final) */
 
         /* Opções de seleção */
         .selection-options {
@@ -571,14 +568,14 @@
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         }
 
-        /* Botões de ação */
+        /* Botões de ação - APENAS COMPRAR AGORA */
         .action-buttons {
             display: flex;
             gap: 20px;
             margin-bottom: 40px;
         }
 
-        .btn-add-to-cart, .btn-buy-now {
+        .btn-buy-now {
             flex: 1;
             padding: 20px 30px;
             border: none;
@@ -596,42 +593,6 @@
             letter-spacing: 1px;
             position: relative;
             overflow: hidden;
-        }
-
-        .btn-add-to-cart {
-            background: var(--secondary-black);
-            color: var(--primary-yellow);
-            border: 2px solid var(--primary-yellow);
-        }
-
-        .btn-add-to-cart::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-add-to-cart:hover:not(:disabled) {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
-            background: rgba(255, 215, 0, 0.1);
-        }
-
-        .btn-add-to-cart:hover:not(:disabled)::before {
-            left: 100%;
-        }
-
-        .btn-add-to-cart:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            border-color: var(--border-dark);
-        }
-
-        .btn-buy-now {
             background: var(--gradient-yellow);
             color: var(--primary-black);
         }
@@ -664,7 +625,7 @@
             color: var(--text-gray);
         }
 
-        .btn-add-to-cart i, .btn-buy-now i {
+        .btn-buy-now i {
             font-size: 1.3rem;
         }
 
@@ -832,14 +793,12 @@
             transform: translateX(5px);
         }
 
-        .footer-links a, .footer-links li {
+        .footer-links a {
             color: var(--text-gray);
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            display: inline-block;
         }
 
         .footer-links a:hover {
@@ -848,9 +807,9 @@
         }
 
         .footer-links i {
-            width: 25px;
+            margin-right: 10px;
             color: var(--primary-yellow);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .copyright {
@@ -901,16 +860,6 @@
         }
 
         /* Animações */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
-        }
-
         .glow {
             animation: glow 1.5s ease-in-out infinite alternate;
         }
@@ -918,39 +867,6 @@
         @keyframes glow {
             from { box-shadow: 0 0 10px var(--primary-yellow), 0 0 20px var(--primary-yellow); }
             to { box-shadow: 0 0 20px var(--primary-yellow), 0 0 30px var(--primary-yellow); }
-        }
-
-        /* Notificação */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary-black);
-            color: var(--primary-yellow);
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-            z-index: 1001;
-            display: none;
-            align-items: center;
-            gap: 15px;
-            animation: slideInRight 0.5s ease-out;
-            border: 2px solid var(--primary-yellow);
-            max-width: 350px;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .notification.show {
-            display: flex;
-        }
-
-        .notification i {
-            font-size: 1.5rem;
-            color: var(--success);
         }
 
         /* Scrollbar personalizada */
@@ -1028,7 +944,6 @@
             100% { transform: translate(-50px, -50px) rotate(360deg); }
         }
 
-        /* Para telas menores, ajustar tamanho das imagens */
         @media (max-width: 768px) {
             .product-image {
                 min-height: 400px;
@@ -1066,20 +981,21 @@
     </style>
 </head>
 <body>
-    <!-- ========== HEADER ========== -->
+    <!-- HEADER -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div>
                     <a href="index.html" class="logo">
                         <i class="fas fa-laptop-code"></i>
-                        Ekuli<span>Tech</span>
+                        Ekulu<span>Tech</span>
                     </a>
+                    <div class="tagline">Ekulu Company</div>
                 </div>
                 
                 <div class="search-bar">
-                    <form>
-                        <input type="text" placeholder="Buscar produtos...">
+                    <form id="searchForm">
+                        <input type="text" id="searchInput" placeholder="Buscar produtos...">
                         <button type="submit"><i class="fas fa-search"></i></button>
                     </form>
                 </div>
@@ -1087,7 +1003,7 @@
         </div>
     </header>
     
-    <!-- ========== NAVEGAÇÃO ========== -->
+    <!-- NAVEGAÇÃO -->
     <nav>
         <div class="container">
             <ul class="nav-links">
@@ -1098,13 +1014,7 @@
         </div>
     </nav>
 
-    <!-- ========== NOTIFICAÇÃO ========== -->
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span>Produto adicionado ao carrinho!</span>
-    </div>
-
-    <!-- ========== CONTEÚDO SELEÇÃO ========== -->
+    <!-- CONTEÚDO SELEÇÃO -->
     <main class="container">
         <div class="breadcrumb">
             <a href="index.html"><i class="fas fa-home"></i> Início</a>
@@ -1130,17 +1040,13 @@
                         <!-- Seleção de Cor -->
                         <div class="option-group">
                             <h3><i class="fas fa-palette"></i> Selecione a Cor:</h3>
-                            <div class="color-options" id="color-options">
-                                <!-- As opções de cor serão inseridas via JavaScript -->
-                            </div>
+                            <div class="color-options" id="color-options"></div>
                         </div>
                         
                         <!-- Seleção de Armazenamento -->
                         <div class="option-group">
                             <h3><i class="fas fa-hdd"></i> Selecione a Capacidade:</h3>
-                            <div class="storage-options" id="storage-options">
-                                <!-- As opções de armazenamento serão inseridas via JavaScript -->
-                            </div>
+                            <div class="storage-options" id="storage-options"></div>
                         </div>
                     </div>
                     
@@ -1151,18 +1057,13 @@
                             <span>|</span>
                             <span id="selected-storage">Nenhum armazenamento selecionado</span>
                         </div>
-                        <div class="final-price">
+                        <div class="final-price" style="display: none;">
                             <strong>Preço Final:</strong>
                             <span id="final-price">0,00 Kz</span>
                         </div>
                     </div>
                     
                     <div class="action-buttons">
-                        <button class="btn-add-to-cart pulse" id="add-to-cart" disabled>
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
-                        
                         <button class="btn-buy-now glow" id="buy-now" disabled>
                             <i class="fas fa-bolt"></i>
                             Comprar Agora
@@ -1173,36 +1074,26 @@
             
             <div class="product-details">
                 <h2><i class="fas fa-microchip"></i> Especificações Técnicas</h2>
-                <div class="specs-grid" id="product-specs">
-                    <!-- As especificações serão inseridas via JavaScript -->
-                </div>
+                <div class="specs-grid" id="product-specs"></div>
             </div>
         </div>
     </main>
     
-    <!-- ========== FOOTER ========== -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Ekuli Tech</h3>
+                    <h3>EkuluTech</h3>
                     <p>Excelência em tecnologia com o toque premium do preto e amarelo. Produtos importados com garantia e qualidade superior.</p>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Links Rápidos</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-arrow-right"></i> Início</a></li>
-                        <li><a href="sobre.html"><i class="fas fa-arrow-right"></i> Sobre Nós</a></li>
-                        <li><a href="iphones.html"><i class="fas fa-arrow-right"></i> iPhone</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Categorias</h3>
-                    <ul class="footer-links">
-                        <li><a href="iphones.html"><i class="fas fa-mobile-alt"></i> iPhone</a></li>
-                        <li><a href="mackbooks.html"><i class="fas fa-laptop"></i> MacBook</a></li>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre Nós</a></li>
+                        <li><a href="iphones.html">iPhone</a></li>
                     </ul>
                 </div>
                 
@@ -1210,29 +1101,28 @@
                     <h3>Contato</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-phone"></i> +244 943 400 675</li>
-                        <li><i class="fas fa-envelope"></i> ekulicompany@gmail.com</li>
+                        <li><i class="fas fa-envelope"></i> ekulucompany@gmail.com</li>
                         <li><i class="fas fa-map-marker-alt"></i> Luanda, Angola</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; <span id="current-year">2023</span> Ekuli Tech - </i> Todos os direitos reservados</p>
+                <p>&copy; <span id="current-year">2023</span> EkuluTech - Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Dados dos produtos COM TODOS OS MODELOS (usando as mesmas imagens do seu catálogo)
+        // Dados dos produtos
         const products = {
-            // iPhone 17 Series
             'iphone-17-pro-max': {
                 name: 'iPhone 17 Pro Max',
                 basePrice: 1930000,
                 colors: [
                     { name: 'Preto', value: 'black', image: 'https://twigo.ru/center/iblock/1cf/z628063najybessfdtodlpn1ymde8vii/17-pro-deep-blue.png' },
                     { name: 'Titânio Natural', value: 'titanium', image: 'https://www.1p.sg/cdn/shop/files/17Promax_538x.png?v=1753282830' },
-                    { name: 'laranja', value: 'tangerine', image: 'https://novosibirsk.rebro-store.ru/upload/iblock/e5b/fg06zz53epo6fnivloo5430xbqxcw9xr.jpg' },
+                    { name: 'Laranja', value: 'tangerine', image: 'https://novosibirsk.rebro-store.ru/upload/iblock/e5b/fg06zz53epo6fnivloo5430xbqxcw9xr.jpg' },
                     { name: 'Branco', value: 'white', image: 'https://rebro-store.ru/upload/iblock/fdc/tmynb3lzu5qjsrgy0e8uayxv3c2kbxpj.jpg' }
                 ],
                 storage: [
@@ -1255,7 +1145,7 @@
                 colors: [
                     { name: 'Preto', value: 'black', image: 'https://twigo.ru/center/iblock/1cf/z628063najybessfdtodlpn1ymde8vii/17-pro-deep-blue.png' },
                     { name: 'Titânio Natural', value: 'titanium', image: 'https://www.1p.sg/cdn/shop/files/17Promax_538x.png?v=1753282830' },
-                    { name: 'laranja', value: 'tangerine', image: 'https://novosibirsk.rebro-store.ru/upload/iblock/e5b/fg06zz53epo6fnivloo5430xbqxcw9xr.jpg' },
+                    { name: 'Laranja', value: 'tangerine', image: 'https://novosibirsk.rebro-store.ru/upload/iblock/e5b/fg06zz53epo6fnivloo5430xbqxcw9xr.jpg' },
                     { name: 'Branco', value: 'white', image: 'https://rebro-store.ru/upload/iblock/fdc/tmynb3lzu5qjsrgy0e8uayxv3c2kbxpj.jpg' }
                 ],
                 storage: [
@@ -1295,8 +1185,6 @@
                     'Sistema': 'iOS 21'
                 }
             },
-
-            // iPhone 16 Series
             'iphone-16-pro-max': {
                 name: 'iPhone 16 Pro Max',
                 basePrice: 1350000,
@@ -1346,7 +1234,7 @@
                 basePrice: 980000,
                 colors: [
                     { name: 'Preto', value: 'black', image: 'https://img.mvideo.ru/Big/30074328bb.jpg' },
-                    { name: 'Azul', value: 'blue', image: 'https://белоеяблоко.рф/upload/resize_cache/iblock/2bb/800_800_1/rzcbgbfiii1bvr4xe5ck48gxcuze98ky.png' },
+                    { name: 'Azul', value: 'blue', image: 'https://xn----7sbahc1bzae5adn5j.xn--p1ai/upload/resize_cache/iblock/2bb/800_800_1/rzcbgbfiii1bvr4xe5ck48gxcuze98ky.png' },
                     { name: 'Rosa', value: 'pink', image: 'https://xn--80afebdf9bi7aiz.xn--p1ai/netcat_files/154/194/iphone_16_pink_1_0.png' },
                     { name: 'Verde', value: 'green', image: 'https://re-luxe42.ru/api/storage/iphone/New/17/%D0%9E%D0%BB%D0%B8%D0%B2%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9/1.jpeg' }
                 ],
@@ -1364,8 +1252,6 @@
                     'Sistema': 'iOS 20'
                 }
             },
-
-            // iPhone 15 Series
             'iphone-15-pro-max': {
                 name: 'iPhone 15 Pro Max',
                 basePrice: 1100000,
@@ -1417,7 +1303,7 @@
                 basePrice: 780000,
                 colors: [
                     { name: 'Preto', value: 'black', image: 'https://twigo.ru/center/iblock/194/100bdwidfgjnvje7n1yusi5i60wohv2z/15-chern.png' },
-                    { name: 'branco', value: 'white', image: 'https://applestore72.ru/upload/iblock/10d/3rjihcu20u9g8sls4agdicun26fmp20r.jpg' },
+                    { name: 'Branco', value: 'white', image: 'https://applestore72.ru/upload/iblock/10d/3rjihcu20u9g8sls4agdicun26fmp20r.jpg' },
                     { name: 'Rosa', value: 'pink', image: 'https://twigo.ru/center/iblock/d0b/uo5d95oxjjkqnfqlwp6vw4asbp7r5t0x/iphone_15_512_gb_rozovyy.jpg' },
                     { name: 'Verde', value: 'green', image: 'https://twigo.ru/center/iblock/834/qxkgksxn8n7fzp6c2bgv7ttuc0bpyi2i/iphone_15_plus_128_gb_zelenyy.jpg' }
                 ],
@@ -1433,56 +1319,6 @@
                     'Bateria': 'Até 20 horas de reprodução de vídeo',
                     'Resistência': 'IP68',
                     'Sistema': 'iOS 19'
-                }
-            },
-
-            // iPhone 14 Series
-            'iphone-14-pro-max': {
-                name: 'iPhone 14 Pro Max',
-                basePrice: 830000,
-                colors: [
-                    { name: 'Roxo Profundo', value: 'deep-purple', image: 'https://niceapplespb.ru/wp-content/uploads/2023/05/apple-iphone-14-pro-128gb.1000x.webp' },
-                    { name: 'Dourado', value: 'gold', image: 'https://niceapplespb.ru/wp-content/uploads/2023/05/apple-iphone-14-pro-128gb.1000x.webp' },
-                    { name: 'Prateado', value: 'silver', image: 'https://niceapplespb.ru/wp-content/uploads/2023/05/apple-iphone-14-pro-128gb.1000x.webp' },
-                    { name: 'Preto Espacial', value: 'space-black', image: 'https://niceapplespb.ru/wp-content/uploads/2023/05/apple-iphone-14-pro-128gb.1000x.webp' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 80000 },
-                    { capacity: '512GB', price: 160000 },
-                    { capacity: '1TB', price: 320000 }
-                ],
-                specs: {
-                    'Tela': '6.7" Super Retina XDR',
-                    'Chip': 'Chip A16 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 48 MP',
-                    'Bateria': 'Até 29 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 18'
-                }
-            },
-            'iphone-14-pro': {
-                name: 'iPhone 14 Pro',
-                basePrice: 740000,
-                colors: [
-                    { name: 'Roxo Profundo', value: 'deep-purple', image: 'https://magimag.ma/web/image/product.template/6637/image_1024?unique=b3edaae' },
-                    { name: 'Dourado', value: 'gold', image: 'https://magimag.ma/web/image/product.template/6637/image_1024?unique=b3edaae' },
-                    { name: 'Prateado', value: 'silver', image: 'https://magimag.ma/web/image/product.template/6637/image_1024?unique=b3edaae' },
-                    { name: 'Preto Espacial', value: 'space-black', image: 'https://magimag.ma/web/image/product.template/6637/image_1024?unique=b3edaae' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 70000 },
-                    { capacity: '512GB', price: 140000 },
-                    { capacity: '1TB', price: 280000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Super Retina XDR',
-                    'Chip': 'Chip A16 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 48 MP',
-                    'Bateria': 'Até 23 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 18'
                 }
             },
             'iphone-14': {
@@ -1507,363 +1343,6 @@
                     'Resistência': 'IP68',
                     'Sistema': 'iOS 18'
                 }
-            },
-
-            // iPhone 13 Series
-            'iphone-13-pro-max': {
-                name: 'iPhone 13 Pro Max',
-                basePrice: 740000,
-                colors: [
-                    { name: 'Verde-alpino', value: 'alpine-green', image: 'https://i0.wp.com/apple.nsk.ru/wp-content/uploads/2022/07/30059058bb.jpg?fit=430%2C430&ssl=1' },
-                    { name: 'Azul-sierra', value: 'sierra-blue', image: 'https://i0.wp.com/apple.nsk.ru/wp-content/uploads/2022/07/30059058bb.jpg?fit=430%2C430&ssl=1' },
-                    { name: 'Dourado', value: 'gold', image: 'https://i0.wp.com/apple.nsk.ru/wp-content/uploads/2022/07/30059058bb.jpg?fit=430%2C430&ssl=1' },
-                    { name: 'Prateado', value: 'silver', image: 'https://i0.wp.com/apple.nsk.ru/wp-content/uploads/2022/07/30059058bb.jpg?fit=430%2C430&ssl=1' },
-                    { name: 'Grafite', value: 'graphite', image: 'https://i0.wp.com/apple.nsk.ru/wp-content/uploads/2022/07/30059058bb.jpg?fit=430%2C430&ssl=1' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 60000 },
-                    { capacity: '512GB', price: 120000 },
-                    { capacity: '1TB', price: 240000 }
-                ],
-                specs: {
-                    'Tela': '6.7" Super Retina XDR',
-                    'Chip': 'Chip A15 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 12 MP',
-                    'Bateria': 'Até 28 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 17'
-                }
-            },
-            'iphone-13-pro': {
-                name: 'iPhone 13 Pro',
-                basePrice: 540000,
-                colors: [
-                    { name: 'Verde-alpino', value: 'alpine-green', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/13pro_green_1.jpg' },
-                    { name: 'Azul-sierra', value: 'sierra-blue', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/13pro_green_1.jpg' },
-                    { name: 'Dourado', value: 'gold', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/13pro_green_1.jpg' },
-                    { name: 'Prateado', value: 'silver', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/13pro_green_1.jpg' },
-                    { name: 'Grafite', value: 'graphite', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/13pro_green_1.jpg' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 50000 },
-                    { capacity: '512GB', price: 100000 },
-                    { capacity: '1TB', price: 200000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Super Retina XDR',
-                    'Chip': 'Chip A15 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 12 MP',
-                    'Bateria': 'Até 22 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 17'
-                }
-            },
-            'iphone-13': {
-                name: 'iPhone 13',
-                basePrice: 410000,
-                colors: [
-                    { name: 'Rosa', value: 'pink', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ckAo0Bo1MztxDd3Qwx3woraXlEqJWSfp6A&s' },
-                    { name: 'Azul', value: 'blue', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ckAo0Bo1MztxDd3Qwx3woraXlEqJWSfp6A&s' },
-                    { name: 'Meia-noite', value: 'midnight', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ckAo0Bo1MztxDd3Qwx3woraXlEqJWSfp6A&s' },
-                    { name: 'Estelar', value: 'starlight', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ckAo0Bo1MztxDd3Qwx3woraXlEqJWSfp6A&s' },
-                    { name: 'Verde', value: 'green', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ckAo0Bo1MztxDd3Qwx3woraXlEqJWSfp6A&s' },
-                    { name: 'Vermelho', value: 'red', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ckAo0Bo1MztxDd3Qwx3woraXlEqJWSfp6A&s' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 40000 },
-                    { capacity: '512GB', price: 80000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Super Retina XDR',
-                    'Chip': 'Chip A15 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 19 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 17'
-                }
-            },
-
-            // iPhone 12 Series
-            'iphone-12-pro-max': {
-                name: 'iPhone 12 Pro Max',
-                basePrice: 540000,
-                colors: [
-                    { name: 'Azul do Pacífico', value: 'pacific-blue', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjisEMyYuSO0z_UhoE1cWtsl9We7U5uJs7Q&s' },
-                    { name: 'Dourado', value: 'gold', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjisEMyYuSO0z_UhoE1cWtsl9We7U5uJs7Q&s' },
-                    { name: 'Grafite', value: 'graphite', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjisEMyYuSO0z_UhoE1cWtsl9We7U5uJs7Q&s' },
-                    { name: 'Prateado', value: 'silver', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQjisEMyYuSO0z_UhoE1cWtsl9We7U5uJs7Q&s' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 30000 },
-                    { capacity: '512GB', price: 60000 }
-                ],
-                specs: {
-                    'Tela': '6.7" Super Retina XDR',
-                    'Chip': 'Chip A14 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 12 MP',
-                    'Bateria': 'Até 20 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 16'
-                }
-            },
-            'iphone-12-pro': {
-                name: 'iPhone 12 Pro',
-                basePrice: 450000,
-                colors: [
-                    { name: 'Azul do Pacífico', value: 'pacific-blue', image: 'https://www.yablokitradein.ru/image/cache/catalog/12%20pro%20iphone/iphone-12-pro-gold-hero-500x500.png' },
-                    { name: 'Dourado', value: 'gold', image: 'https://www.yablokitradein.ru/image/cache/catalog/12%20pro%20iphone/iphone-12-pro-gold-hero-500x500.png' },
-                    { name: 'Grafite', value: 'graphite', image: 'https://www.yablokitradein.ru/image/cache/catalog/12%20pro%20iphone/iphone-12-pro-gold-hero-500x500.png' },
-                    { name: 'Prateado', value: 'silver', image: 'https://www.yablokitradein.ru/image/cache/catalog/12%20pro%20iphone/iphone-12-pro-gold-hero-500x500.png' }
-                ],
-                storage: [
-                    { capacity: '128GB', price: 0 },
-                    { capacity: '256GB', price: 25000 },
-                    { capacity: '512GB', price: 50000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Super Retina XDR',
-                    'Chip': 'Chip A14 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 12 MP',
-                    'Bateria': 'Até 17 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 16'
-                }
-            },
-            'iphone-12': {
-                name: 'iPhone 12',
-                basePrice: 350000,
-                colors: [
-                    { name: 'Preto', value: 'black', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36_RuWtAWrt35BUBf3tnMIEdbew9cVdKt1A&s' },
-                    { name: 'Branco', value: 'white', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36_RuWtAWrt35BUBf3tnMIEdbew9cVdKt1A&s' },
-                    { name: 'Verde', value: 'green', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36_RuWtAWrt35BUBf3tnMIEdbew9cVdKt1A&s' },
-                    { name: 'Azul', value: 'blue', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36_RuWtAWrt35BUBf3tnMIEdbew9cVdKt1A&s' },
-                    { name: 'Vermelho', value: 'red', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36_RuWtAWrt35BUBf3tnMIEdbew9cVdKt1A&s' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '128GB', price: 20000 },
-                    { capacity: '256GB', price: 40000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Super Retina XDR',
-                    'Chip': 'Chip A14 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 17 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 16'
-                }
-            },
-
-            // iPhone 11 Series
-            'iphone-11-pro-max': {
-                name: 'iPhone 11 Pro Max',
-                basePrice: 400000,
-                colors: [
-                    { name: 'Verde-meia-noite', value: 'midnight-green', image: 'https://mobi-s.ru/wp-content/uploads/2021/05/1.jpg.webp' },
-                    { name: 'Dourado', value: 'gold', image: 'https://mobi-s.ru/wp-content/uploads/2021/05/1.jpg.webp' },
-                    { name: 'Prateado', value: 'silver', image: 'https://mobi-s.ru/wp-content/uploads/2021/05/1.jpg.webp' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://mobi-s.ru/wp-content/uploads/2021/05/1.jpg.webp' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 20000 },
-                    { capacity: '512GB', price: 40000 }
-                ],
-                specs: {
-                    'Tela': '6.5" Super Retina XDR',
-                    'Chip': 'Chip A13 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 12 MP',
-                    'Bateria': 'Até 20 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 15'
-                }
-            },
-            'iphone-11-pro': {
-                name: 'iPhone 11 Pro',
-                basePrice: 370000,
-                colors: [
-                    { name: 'Verde-meia-noite', value: 'midnight-green', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/11promaxgold.jpeg' },
-                    { name: 'Dourado', value: 'gold', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/11promaxgold.jpeg' },
-                    { name: 'Prateado', value: 'silver', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/11promaxgold.jpeg' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://niceapplespb.ru/wp-content/uploads/2022/03/11promaxgold.jpeg' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 15000 },
-                    { capacity: '512GB', price: 30000 }
-                ],
-                specs: {
-                    'Tela': '5.8" Super Retina XDR',
-                    'Chip': 'Chip A13 Bionic',
-                    'Câmera': 'Sistema de câmera tripla de 12 MP',
-                    'Bateria': 'Até 18 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 15'
-                }
-            },
-            'iphone-11': {
-                name: 'iPhone 11',
-                basePrice: 250000,
-                colors: [
-                    { name: 'Preto', value: 'black', image: 'https://device365.ru/upload/iblock/0d2/skadotdylqdg2cj4y0kza6smw8vkngje.webp' },
-                    { name: 'Branco', value: 'white', image: 'https://device365.ru/upload/iblock/0d2/skadotdylqdg2cj4y0kza6smw8vkngje.webp' },
-                    { name: 'Verde', value: 'green', image: 'https://device365.ru/upload/iblock/0d2/skadotdylqdg2cj4y0kza6smw8vkngje.webp' },
-                    { name: 'Amarelo', value: 'yellow', image: 'https://device365.ru/upload/iblock/0d2/skadotdylqdg2cj4y0kza6smw8vkngje.webp' },
-                    { name: 'Roxo', value: 'purple', image: 'https://device365.ru/upload/iblock/0d2/skadotdylqdg2cj4y0kza6smw8vkngje.webp' },
-                    { name: 'Vermelho', value: 'red', image: 'https://device365.ru/upload/iblock/0d2/skadotdylqdg2cj4y0kza6smw8vkngje.webp' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '128GB', price: 10000 },
-                    { capacity: '256GB', price: 20000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Liquid Retina HD',
-                    'Chip': 'Chip A13 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 17 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 15'
-                }
-            },
-
-            // iPhone X Series
-            'iphone-xs-max': {
-                name: 'iPhone XS Max',
-                basePrice: 265000,
-                colors: [
-                    { name: 'Dourado', value: 'gold', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVl2dkBq6BNavmGLirzCUFEkqwXiBxQmI8F_BIvTrxOkSWOFShLqId6veChph3jCPutXA&usqp=CAU' },
-                    { name: 'Prateado', value: 'silver', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVl2dkBq6BNavmGLirzCUFEkqwXiBxQmI8F_BIvTrxOkSWOFShLqId6veChph3jCPutXA&usqp=CAU' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVl2dkBq6BNavmGLirzCUFEkqwXiBxQmI8F_BIvTrxOkSWOFShLqId6veChph3jCPutXA&usqp=CAU' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 8000 },
-                    { capacity: '512GB', price: 16000 }
-                ],
-                specs: {
-                    'Tela': '6.5" Super Retina HD',
-                    'Chip': 'Chip A12 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 15 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 14'
-                }
-            },
-            'iphone-xs': {
-                name: 'iPhone XS',
-                basePrice: 230000,
-                colors: [
-                    { name: 'Dourado', value: 'gold', image: 'https://смартфон74.рф/image/cache/catalog/1vossta/iphonexsmaxbu/appleiphonexsmaxser-1000x1000.jpg' },
-                    { name: 'Prateado', value: 'silver', image: 'https://смартфон74.рф/image/cache/catalog/1vossta/iphonexsmaxbu/appleiphonexsmaxser-1000x1000.jpg' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://смартфон74.рф/image/cache/catalog/1vossta/iphonexsmaxbu/appleiphonexsmaxser-1000x1000.jpg' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 6000 },
-                    { capacity: '512GB', price: 12000 }
-                ],
-                specs: {
-                    'Tela': '5.8" Super Retina HD',
-                    'Chip': 'Chip A12 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 14 horas de reprodução de vídeo',
-                    'Resistência': 'IP68',
-                    'Sistema': 'iOS 14'
-                }
-            },
-            'iphone-xr': {
-                name: 'iPhone XR',
-                basePrice: 230000,
-                colors: [
-                    { name: 'Preto', value: 'black', image: 'https://i-stock.store/image/cache/catalog/1new1/xriphone/appleiphonexryellow-500x500.png' },
-                    { name: 'Branco', value: 'white', image: 'https://i-stock.store/image/cache/catalog/1new1/xriphone/appleiphonexryellow-500x500.png' },
-                    { name: 'Azul', value: 'blue', image: 'https://i-stock.store/image/cache/catalog/1new1/xriphone/appleiphonexryellow-500x500.png' },
-                    { name: 'Amarelo', value: 'yellow', image: 'https://i-stock.store/image/cache/catalog/1new1/xriphone/appleiphonexryellow-500x500.png' },
-                    { name: 'Coral', value: 'coral', image: 'https://i-stock.store/image/cache/catalog/1new1/xriphone/appleiphonexryellow-500x500.png' },
-                    { name: 'Vermelho', value: 'red', image: 'https://i-stock.store/image/cache/catalog/1new1/xriphone/appleiphonexryellow-500x500.png' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '128GB', price: 5000 },
-                    { capacity: '256GB', price: 10000 }
-                ],
-                specs: {
-                    'Tela': '6.1" Liquid Retina HD',
-                    'Chip': 'Chip A12 Bionic',
-                    'Câmera': 'Câmera única de 12 MP',
-                    'Bateria': 'Até 16 horas de reprodução de vídeo',
-                    'Resistência': 'IP67',
-                    'Sistema': 'iOS 14'
-                }
-            },
-            'iphone-x': {
-                name: 'iPhone X',
-                basePrice: 200000,
-                colors: [
-                    { name: 'Prateado', value: 'silver', image: 'https://mccentre.ru/images/cache/data/apple-iphone-xr/iphone-xr-rd-202010-1-800x800.jpg' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://mccentre.ru/images/cache/data/apple-iphone-xr/iphone-xr-rd-202010-1-800x800.jpg' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 5000 }
-                ],
-                specs: {
-                    'Tela': '5.8" Super Retina HD',
-                    'Chip': 'Chip A11 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 13 horas de reprodução de vídeo',
-                    'Resistência': 'IP67',
-                    'Sistema': 'iOS 14'
-                }
-            },
-
-            // iPhone 8 Series
-            'iphone-8-plus': {
-                name: 'iPhone 8 Plus',
-                basePrice: 150000,
-                colors: [
-                    { name: 'Dourado', value: 'gold', image: 'https://www.ubuy.co.am/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9zZW8vUHJlLU93bmVkLWlQaG9uZS04LVBsdXMtNjRHQi1Hb2xkLVVubG9ja2VkLVJlZnVyYmlzaGVkLUdvb2RfODBhNWU4MTItYzZhYy00N2FkLThlMTUtZDk2YzBiNjk3N2M0LmNkM2Q1OWNhNzc5OTU3NWUzZTdjMzNhMzE4Njk1ODM0LmpwZWc.jpg' },
-                    { name: 'Prateado', value: 'silver', image: 'https://www.ubuy.co.am/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9zZW8vUHJlLU93bmVkLWlQaG9uZS04LVBsdXMtNjRHQi1Hb2xkLVVubG9ja2VkLVJlZnVyYmlzaGVkLUdvb2RfODBhNWU4MTItYzZhYy00N2FkLThlMTUtZDk2YzBiNjk3N2M0LmNkM2Q1OWNhNzc5OTU3NWUzZTdjMzNhMzE4Njk1ODM0LmpwZWc.jpg' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://www.ubuy.co.am/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9zZW8vUHJlLU93bmVkLWlQaG9uZS04LVBsdXMtNjRHQi1Hb2xkLVVubG9ja2VkLVJlZnVyYmlzaGVkLUdvb2RfODBhNWU4MTItYzZhYy00N2FkLThlMTUtZDk2YzBiNjk3N2M0LmNkM2Q1OWNhNzc5OTU3NWUzZTdjMzNhMzE4Njk1ODM0LmpwZWc.jpg' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 3000 }
-                ],
-                specs: {
-                    'Tela': '5.5" Retina HD',
-                    'Chip': 'Chip A11 Bionic',
-                    'Câmera': 'Sistema de câmera dupla de 12 MP',
-                    'Bateria': 'Até 14 horas de reprodução de vídeo',
-                    'Resistência': 'IP67',
-                    'Sistema': 'iOS 13'
-                }
-            },
-            'iphone-8': {
-                name: 'iPhone 8',
-                basePrice: 110000,
-                colors: [
-                    { name: 'Dourado', value: 'gold', image: 'https://mobi-s.ru/wp-content/uploads/2018/01/iphone-8-silver.jpg.webp' },
-                    { name: 'Prateado', value: 'silver', image: 'https://mobi-s.ru/wp-content/uploads/2018/01/iphone-8-silver.jpg.webp' },
-                    { name: 'Cinza-espacial', value: 'space-gray', image: 'https://mobi-s.ru/wp-content/uploads/2018/01/iphone-8-silver.jpg.webp' }
-                ],
-                storage: [
-                    { capacity: '64GB', price: 0 },
-                    { capacity: '256GB', price: 2000 }
-                ],
-                specs: {
-                    'Tela': '4.7" Retina HD',
-                    'Chip': 'Chip A11 Bionic',
-                    'Câmera': 'Câmera única de 12 MP',
-                    'Bateria': 'Até 13 horas de reprodução de vídeo',
-                    'Resistência': 'IP67',
-                    'Sistema': 'iOS 13'
-                }
             }
         };
 
@@ -1871,7 +1350,6 @@
         const elements = {
             modelName: document.getElementById('model-name'),
             productTitle: document.getElementById('product-title'),
-            productPrice: document.getElementById('product-price'),
             productImg: document.getElementById('product-img'),
             imagePlaceholder: document.getElementById('image-placeholder'),
             colorOptions: document.getElementById('color-options'),
@@ -1880,33 +1358,21 @@
             selectedStorage: document.getElementById('selected-storage'),
             finalPrice: document.getElementById('final-price'),
             productSpecs: document.getElementById('product-specs'),
-            addToCartBtn: document.getElementById('add-to-cart'),
             buyNowBtn: document.getElementById('buy-now'),
-            notification: document.getElementById('notification'),
             currentYear: document.getElementById('current-year')
         };
 
-        // Obter modelo da URL
         function getModelFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
-            const model = urlParams.get('model');
-            return model || 'iphone-15-pro-max';
+            return urlParams.get('model') || 'iphone-15-pro-max';
         }
 
-        // Inicializar página
         function initializePage() {
             const model = getModelFromURL();
             const product = products[model];
             
-            console.log('Carregando modelo:', model);
-            console.log('Produto encontrado:', product ? 'Sim' : 'Não');
-            
             if (!product) {
-                console.error('Produto não encontrado:', model);
-                showNotification('Modelo não encontrado. Redirecionando...', 'error');
-                setTimeout(() => {
-                    window.location.href = 'iphones.html';
-                }, 2000);
+                setTimeout(() => window.location.href = 'iphones.html', 2000);
                 return;
             }
             
@@ -1921,12 +1387,8 @@
         function updateProductInfo(product) {
             elements.modelName.textContent = product.name;
             elements.productTitle.textContent = product.name;
-            
-            // Definir imagem padrão da primeira cor
             if (product.colors && product.colors.length > 0) {
-                const firstColor = product.colors[0];
-                loadImage(firstColor.image);
-                elements.productImg.alt = `${product.name} ${firstColor.name}`;
+                loadImage(product.colors[0].image);
             }
         }
 
@@ -1936,37 +1398,28 @@
                 elements.imagePlaceholder.style.display = 'none';
                 elements.productImg.src = src;
                 elements.productImg.style.display = 'block';
-                
-                // Adicionar classe para transição suave
-                setTimeout(() => {
-                    elements.productImg.classList.add('image-loaded');
-                }, 50);
+                setTimeout(() => elements.productImg.classList.add('image-loaded'), 50);
             };
             img.onerror = () => {
-                elements.imagePlaceholder.innerHTML = 
-                    '<i class="fas fa-exclamation-triangle"></i><span>Imagem não disponível</span>';
+                elements.imagePlaceholder.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>Imagem não disponível</span>';
                 elements.imagePlaceholder.style.display = 'flex';
                 elements.productImg.style.display = 'none';
-                console.error('Erro ao carregar imagem:', src);
             };
             img.src = src;
         }
 
         function loadColorOptions(colors) {
             elements.colorOptions.innerHTML = '';
-            
-            colors.forEach((color, index) => {
+            colors.forEach(color => {
                 const colorOption = document.createElement('div');
                 colorOption.className = 'color-option';
                 colorOption.dataset.value = color.value;
                 colorOption.dataset.name = color.name;
                 colorOption.dataset.image = color.image;
-                
                 colorOption.innerHTML = `
                     <div class="color-sample" style="background-color: ${getColorHex(color.value)}"></div>
                     <span>${color.name}</span>
                 `;
-                
                 colorOption.addEventListener('click', () => selectColor(colorOption));
                 elements.colorOptions.appendChild(colorOption);
             });
@@ -1974,20 +1427,12 @@
 
         function loadStorageOptions(storageOptions) {
             elements.storageOptions.innerHTML = '';
-            
-            storageOptions.forEach((storage, index) => {
+            storageOptions.forEach(storage => {
                 const storageOption = document.createElement('div');
                 storageOption.className = 'storage-option';
                 storageOption.dataset.capacity = storage.capacity;
                 storageOption.dataset.price = storage.price;
-                
-                // MODIFICAÇÃO: Não mostrar preços na seleção de memória
-                const priceText = ''; // Remover completamente o texto do preço
-                storageOption.innerHTML = `
-                    <span class="capacity">${storage.capacity}</span>
-                    <span class="price-diff">${priceText}</span>
-                `;
-                
+                storageOption.innerHTML = `<span class="capacity">${storage.capacity}</span>`;
                 storageOption.addEventListener('click', () => selectStorage(storageOption));
                 elements.storageOptions.appendChild(storageOption);
             });
@@ -1995,14 +1440,10 @@
 
         function loadSpecifications(specs) {
             elements.productSpecs.innerHTML = '';
-            
             for (const [key, value] of Object.entries(specs)) {
                 const specItem = document.createElement('div');
                 specItem.className = 'spec-item';
-                specItem.innerHTML = `
-                    <strong>${key}:</strong>
-                    <span>${value}</span>
-                `;
+                specItem.innerHTML = `<strong>${key}:</strong><span>${value}</span>`;
                 elements.productSpecs.appendChild(specItem);
             }
         }
@@ -2010,184 +1451,53 @@
         function selectDefaultOptions(product) {
             const firstColor = elements.colorOptions.querySelector('.color-option');
             const firstStorage = elements.storageOptions.querySelector('.storage-option');
-            
             if (firstColor) selectColor(firstColor);
             if (firstStorage) selectStorage(firstStorage);
-            
-            updatePrice();
             checkSelectionComplete();
         }
 
         function selectColor(colorElement) {
-            elements.colorOptions.querySelectorAll('.color-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
+            elements.colorOptions.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
             colorElement.classList.add('selected');
-            
-            const colorName = colorElement.dataset.name;
-            const imageSrc = colorElement.dataset.image;
-            
-            elements.selectedColor.textContent = colorName;
+            elements.selectedColor.textContent = colorElement.dataset.name;
             elements.imagePlaceholder.style.display = 'flex';
             elements.productImg.style.display = 'none';
             elements.productImg.classList.remove('image-loaded');
-            loadImage(imageSrc);
-            
-            updatePrice();
+            loadImage(colorElement.dataset.image);
             checkSelectionComplete();
         }
 
         function selectStorage(storageElement) {
-            elements.storageOptions.querySelectorAll('.storage-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
+            elements.storageOptions.querySelectorAll('.storage-option').forEach(opt => opt.classList.remove('selected'));
             storageElement.classList.add('selected');
-            
-            const capacity = storageElement.dataset.capacity;
-            elements.selectedStorage.textContent = capacity;
-            
-            updatePrice();
+            elements.selectedStorage.textContent = storageElement.dataset.capacity;
             checkSelectionComplete();
-        }
-
-        function updatePrice() {
-            const model = getModelFromURL();
-            const product = products[model];
-            const selectedStorage = elements.storageOptions.querySelector('.storage-option.selected');
-            
-            if (!product || !selectedStorage) return;
-            
-            const storagePrice = parseFloat(selectedStorage.dataset.price) || 0;
-            const finalPrice = product.basePrice + storagePrice;
-            
-            elements.finalPrice.textContent = formatPrice(finalPrice) + ' Kz';
         }
 
         function checkSelectionComplete() {
             const colorSelected = elements.colorOptions.querySelector('.color-option.selected');
             const storageSelected = elements.storageOptions.querySelector('.storage-option.selected');
             const complete = colorSelected && storageSelected;
-            
-            elements.addToCartBtn.disabled = !complete;
             elements.buyNowBtn.disabled = !complete;
-            
-            if (complete) {
-                elements.addToCartBtn.classList.add('pulse');
-                elements.buyNowBtn.classList.add('glow');
-            } else {
-                elements.addToCartBtn.classList.remove('pulse');
-                elements.buyNowBtn.classList.remove('glow');
-            }
-        }
-
-        function formatPrice(price) {
-            return new Intl.NumberFormat('pt-BR', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(price);
         }
 
         function getColorHex(colorName) {
             const colorMap = {
-                'black': '#000000',
-                'white': '#FFFFFF',
-                'blue': '#007AFF',
-                'pink': '#FF2D55',
-                'green': '#34C759',
-                'graphite': '#4A4A4A',
-                'silver': '#C0C0C0',
-                'gold': '#FFD700',
-                'titanium': '#878681',
-                'blue-titanium': '#5E8EA2',
-                'white-titanium': '#D4D4D2',
-                'black-titanium': '#2C2C2E',
-                'deep-purple': '#483D5B',
-                'space-black': '#1C1C1E',
-                'midnight': '#171717',
-                'starlight': '#F5F5DC',
-                'alpine-green': '#4F6B58',
-                'sierra-blue': '#9BB5CE',
-                'pacific-blue': '#4E6C5A',
-                'midnight-green': '#4E6C5A',
-                'space-gray': '#8E8E93',
-                'yellow': '#FFD700',
-                'coral': '#FF7F50',
-                'purple': '#A020F0',
-                'red': '#FF3B30',
-                'tangerine': '#FF8800'
+                'black': '#000000', 'white': '#FFFFFF', 'blue': '#007AFF', 'pink': '#FF2D55',
+                'green': '#34C759', 'graphite': '#4A4A4A', 'silver': '#C0C0C0', 'gold': '#FFD700',
+                'titanium': '#878681', 'blue-titanium': '#5E8EA2', 'white-titanium': '#D4D4D2',
+                'black-titanium': '#2C2C2E', 'deep-purple': '#483D5B', 'space-black': '#1C1C1E',
+                'midnight': '#171717', 'starlight': '#F5F5DC', 'purple': '#A020F0', 'red': '#FF3B30',
+                'tangerine': '#FF8800', 'yellow': '#FFD700'
             };
             return colorMap[colorName] || '#FFD700';
         }
 
         function updateCopyrightYear() {
-            if (elements.currentYear) {
-                elements.currentYear.textContent = new Date().getFullYear();
-            }
+            if (elements.currentYear) elements.currentYear.textContent = new Date().getFullYear();
         }
 
-        function showNotification(message, type = 'success') {
-            const notification = elements.notification;
-            const icon = notification.querySelector('i');
-            const text = notification.querySelector('span');
-            
-            text.textContent = message;
-            
-            if (type === 'success') {
-                icon.className = 'fas fa-check-circle';
-                icon.style.color = 'var(--success)';
-            } else if (type === 'error') {
-                icon.className = 'fas fa-exclamation-circle';
-                icon.style.color = '#FF4444';
-            }
-            
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Event Listeners
-        elements.addToCartBtn.addEventListener('click', function() {
-            const model = getModelFromURL();
-            const product = products[model];
-            const selectedColor = elements.colorOptions.querySelector('.color-option.selected');
-            const selectedStorage = elements.storageOptions.querySelector('.storage-option.selected');
-            
-            if (!selectedColor || !selectedStorage) return;
-            
-            const cartItem = {
-                id: `${model}-${selectedColor.dataset.value}-${selectedStorage.dataset.capacity}`,
-                model: model,
-                name: product.name,
-                color: selectedColor.dataset.name,
-                storage: selectedStorage.dataset.capacity,
-                price: calculateFinalPrice(),
-                image: elements.productImg.src,
-                date: new Date().toISOString()
-            };
-            
-            // Salvar no carrinho
-            let cart = JSON.parse(localStorage.getItem('ekuli-cart') || '[]');
-            cart.push(cartItem);
-            localStorage.setItem('ekuli-cart', JSON.stringify(cart));
-            
-            // Feedback
-            showNotification('Produto adicionado ao carrinho!');
-            
-            // Animação do botão
-            const originalHTML = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
-            this.classList.remove('pulse');
-            
-            setTimeout(() => {
-                this.innerHTML = originalHTML;
-                this.classList.add('pulse');
-            }, 2000);
-        });
-
+        // Comprar Agora
         elements.buyNowBtn.addEventListener('click', function() {
             const model = getModelFromURL();
             const product = products[model];
@@ -2202,37 +1512,24 @@
                 name: product.name,
                 color: selectedColor.dataset.name,
                 storage: selectedStorage.dataset.capacity,
-                price: calculateFinalPrice(),
+                price: product.basePrice + (parseFloat(selectedStorage.dataset.price) || 0),
                 image: elements.productImg.src,
                 date: new Date().toISOString()
             };
             
-            localStorage.setItem('ekuli-checkout-item', JSON.stringify(checkoutItem));
-            window.location.href = 'checkout.html';
+            localStorage.setItem('ekulu-checkout-item', JSON.stringify(checkoutItem));
+            window.location.href = 'pagamento.html';
         });
 
-        function calculateFinalPrice() {
-            const model = getModelFromURL();
-            const product = products[model];
-            const selectedStorage = elements.storageOptions.querySelector('.storage-option.selected');
-            
-            if (!product || !selectedStorage) return 0;
-            
-            const storagePrice = parseFloat(selectedStorage.dataset.price) || 0;
-            return product.basePrice + storagePrice;
-        }
+        // Busca
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const term = document.getElementById('searchInput').value.trim();
+            if (term) window.location.href = `iphones.html?search=${encodeURIComponent(term)}`;
+        });
 
         // Inicializar
         document.addEventListener('DOMContentLoaded', initializePage);
-        
-        // Fallback para imagens
-        elements.productImg.addEventListener('error', function() {
-            console.error('Erro ao carregar imagem:', this.src);
-            this.style.display = 'none';
-            elements.imagePlaceholder.style.display = 'flex';
-            elements.imagePlaceholder.innerHTML = 
-                '<i class="fas fa-exclamation-triangle"></i><span>Imagem indisponível</span>';
-        });
     </script>
 </body>
 </html>
