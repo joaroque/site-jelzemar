@@ -1,351 +1,44 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EkuliTech - Ekuli Company</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* ========== CORREÇÃO DO MENU NA PÁGINA INICIAL ========== */
-        /* O menu principal já está no style.css, removemos o CSS duplicado */
-        
-        /* Apenas corrigimos o link ativo se necessário */
-        .nav-links a[href="index.html"] {
-            color: #FFD700 !important;
-            background: rgba(255, 215, 0, 0.1) !important;
-        }
-        
-        .nav-links a[href="index.html"]::after {
-            opacity: 1 !important;
-            transform: scaleX(1) !important;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
-        }
-        
-        /* Estilos específicos da página inicial */
-        .product-image {
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            padding: 20px;
-        }        
-
-        .banners-section {
-            margin: 60px 0;
-            background: linear-gradient(135deg, #161616, #0a0a0a);
-            padding: 40px 20px;
-            border-radius: 12px;
-        }
-
-        .banner-group-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .category-groups {
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .category-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .category-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .banner-card {
-            width: 100%;
-            height: 350px;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .banner-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
-
-        .iphone-banner {
-            background: linear-gradient(rgba(22, 22, 22, 0.3), rgba(0, 0, 0, 0.3)), 
-                        url('https://zagrangid.com/wp-content/uploads/Apple-iPhone-16-price.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .macbook-banner {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                        url('https://kazandigital.ru/uploaded/files/wgq3fqwfq.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .banner-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px;
-            color: white;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-        }
-
-        .banner-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .banner-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-    </style>
-</head>
-<body>
-    <!-- ========== HEADER ========== -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div>
-                    <a href="index.html" class="logo">
-                        <i class="fas fa-laptop-code"></i>
-                        Ekuli<span>Tech</span>
-                    </a>
-                    <div class="tagline">Ekuli Company</div>
-                </div>
-                
-                <div class="search-bar">
-                    <form>
-                        <input type="text" placeholder="Buscar produtos...">
-                        <button type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-<!-- ========== NAVEGAÇÃO ========== -->
-<nav>
-    <div class="container">
-        <ul class="nav-links">
-            <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre Nós</a></li>
-            <li><a href="iphones.html"><i class="fas fa-mobile-alt"></i> iPhone</a></li>
-        </ul>
-    </div>
-</nav>
-
-    <!-- ========== CONTEÚDO PRINCIPAL ========== -->
-    <main class="container">
-        <!-- ========== HERO SECTION ========== -->
-        <section class="hero">
-            <div class="container">
-                <h1>Ekuli<span>Tech</span> - Tecnologia de Ponta</h1>
-                <p>Os melhores iPhones e MacBooks importados diretamente dos EUA com garantia e qualidade.</p>
-            </div>
-        </section>
-        
-        <!-- ========== SEÇÃO DESTAQUES ========== -->
-        <h2 class="section-title">Destaques</h2>
-        
-        <div class="products-grid">
-            <!-- Produto 1 - iPhone 16 Pro Max -->
-            <div class="product-card" onclick="window.location.href='selecionar-iphone.html?model=iphone-16-pro-max'">
-                <div class="product-image">
-                    <img src="https://static.insales-cdn.com/r/9GKHb6P6BHo/rs:fit:1000:0:1/q:100/plain/images/products/1/4617/937587209/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD_%D0%B1%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_-_2024-11-24T110250.851.png@png" alt="iPhone16">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">iPhone 16 Pro Max</h3>
-                    <p class="product-price">1.299.870,00 AOA</p>
-                    <p class="product-location"><i class="fas fa-map-marker-alt"></i> Importado dos EUA</p>
-                </div>
-            </div>
-            
-            <!-- Produto 2 - iPhone 15 Pro -->
-            <div class="product-card" onclick="window.location.href='selecionar-iphone.html?model=iphone-15-pro'">
-                <div class="product-image">
-                    <img src="https://static.insales-cdn.com/images/products/1/2677/766470773/%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD_%D0%B1%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F__54_.png" alt="MacBook">
-                </div>
-                    <div class="product-info">
-                    <h3 class="product-title">iPhone Pro 15</h3>
-                    <p class="product-price">3.249.870,00 AOA</p>
-                    <p class="product-location"><i class="fas fa-map-marker-alt"></i> Importado dos EUA</p>
-                </div>
-            </div>
-            
-            <!-- Produto 3 - iPhone 14 -->
-            <div class="product-card" onclick="window.location.href='selecionar-iphone.html?model=iphone-14'">
-                <div class="product-image">
-                    <img src="https://twigo.ru/center/iblock/d50/iphone_14_128_gb_temnaya_noch.jpeg" alt="iPhone">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">iPhone 14</h3>
-                    <p class="product-price">896.870,00 AOA</p>
-                    <p class="product-location"><i class="fas fa-map-marker-alt"></i> Importado dos EUA</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- ========== SEÇÃO CATEGORIAS ========== -->
-        <section class="banners-section">
-            <h2 class="banner-group-title">Categorias</h2>
-            <div class="category-groups">
-                <!-- Grupo iPhone + Telefones -->
-                <div class="category-group">
-                    <h3 class="category-title">iPhones + Telefones</h3>
-                    <div class="banner-card iphone-banner" onclick="window.location.href='iphones.html'">
-                        <div class="banner-content">
-                            <div class="banner-title">iPhones</div>
-                            <div class="banner-subtitle">Os melhores modelos importados</div>
-                        </div>
-                    </div>
-                </div>
-                
-               
-            </div>
-        </section>
-
-        <!-- ========== SEÇÃO PORQUE COMPRAR NA EKULLITECH ========== -->
-        <section class="benefits-section">
-            <h2 class="section-title">Por que Comprar na EkuliTech?</h2>
-            <div class="benefits-grid">
-                <div class="benefit-item">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Qualidade Garantida</h3>
-                    <p>Todos os produtos passam por rigorosa inspeção</p>
-                </div>
-                
-                <div class="benefit-item">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h3>Entrega Rápida</h3>
-                    <p>Receba seu produto entre 15 a 28 dias úteis</p>
-                </div>
-                
-                <div class="benefit-item">
-                    <i class="fas fa-dollar-sign"></i>
-                    <h3>Preços Competitivos</h3>
-                    <p>Melhores preços do mercado angolano</p>
-                </div>
-            </div>
-        </section>
+<!doctype html>
+<html lang="pt-AO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8f2" />
+    <meta
+      name="description"
+      content="Encontre o seu próximo iPhone ou MacBook na EkuluTech. Tecnologia importada dos EUA para Angola, com atendimento próximo e preços em kwanzas."
+    />
+    <title>EkuluTech — O seu próximo nível em tecnologia</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/manrope.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="catalog.js" defer></script>
+    <script src="index.js" defer></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main">Saltar para o conteúdo</a>
+    <div id="site-header"></div>
+    <main id="main" tabindex="-1">
+      <noscript
+        ><div class="container empty-state">
+          <h1>Bem-vindo à EkuluTech</h1>
+          <p>Ative o JavaScript para explorar os produtos e usar o carrinho.</p>
+          <a href="tel:+244943400675">Fale connosco: +244 943 400 675</a>
+        </div></noscript
+      >
     </main>
-    
-    <!-- ========== FOOTER ========== -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>EkuliTech</h3>
-                    <p>Ekuli Company - Especialistas em tecnologia importada dos Estados Unidos com garantia de qualidade e procedência.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="iphones.html">iPhone</a></li>
-                        <li><a href="sobre.html">Sobre</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contato</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-phone"></i> +244 943 400 675</li>
-                        <li><i class="fas fa-envelope"></i> ekulicompany@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Luanda, Angola</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; <span id="currentYear">2023</span> EkuliTech - Ekuli Company - Todos os direitos reservados</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Atualizar o ano atual no copyright
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Script simples para destacar o item ativo no menu
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            navLinks.forEach(link => {
-                // Remove classe active de todos
-                link.classList.remove('active');
-                
-                // Adiciona classe active na página atual
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Adicionar cursor pointer em todos os product-cards
-        document.addEventListener('DOMContentLoaded', function() {
-            const productCards = document.querySelectorAll('.product-card');
-            
-            productCards.forEach(card => {
-                // Garante que o cursor seja pointer
-                card.style.cursor = 'pointer';
-                
-                // Se não tiver onclick, adiciona um padrão para iPhones
-                if (!card.getAttribute('onclick')) {
-                    const title = card.querySelector('.product-title').textContent.toLowerCase();
-                    
-                    // Verifica se é um iPhone
-                    if (title.includes('iphone')) {
-                        let modelName = title
-                            .replace('iphone ', 'iphone-')
-                            .replace(' pro max', '-pro-max')
-                            .replace(' pro', '-pro')
-                            .replace(' ', '');
-                            
-                        // Corrige alguns nomes específicos
-                        if (modelName.includes('iphone16-pro-max')) {
-                            modelName = 'iphone-16-pro-max';
-                        } else if (modelName.includes('iphone14')) {
-                            modelName = 'iphone-14';
-                        } else if (modelName.includes('iphone-pro15')) {
-                            modelName = 'iphone-15-pro';
-                        }
-                        
-                        card.setAttribute('onclick', `window.location.href='selecionar-iphone.html?model=${modelName}'`);
-                    }
-                }
-            });
-        });
-    </script>
-</body>
+    <div id="site-footer"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <dialog
+      id="cart-drawer"
+      class="cart-drawer"
+      aria-labelledby="drawer-title"
+    ></dialog>
+  </body>
 </html>
